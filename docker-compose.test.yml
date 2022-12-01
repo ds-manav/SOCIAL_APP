@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgre
+  
+  python_app_2:
+    build:
+      context: .
+      dockerfile: ./social_connect_app_backend./Dockerfile
+    volumes:
+      - ./social_connect_app_backend:/code
+    environment:
+      NODE_ENV: test
+    command: python manage.py test main/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  

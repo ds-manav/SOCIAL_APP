@@ -1,0 +1,26 @@
+.outer_comment{
+    display: contents;
+
+}
+
+.comments_list{
+    max-height: 70px;
+    max-width: 200px;
+    text-align: center;
+    border-width: 20px;
+    border-radius: 30px;
+    border-color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: -40px;
+    
+    
+}
+
+.contents{
+    display: flex;
+    flex-direction: row;
+    margin-left: 100px;
+    text-align: left;
+    padding-left: -1000px
+}

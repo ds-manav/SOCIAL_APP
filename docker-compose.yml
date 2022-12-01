@@ -1,0 +1,42 @@
+version: '3.8'
+services:
+  db:
+    image: postgres
+    # volumes:
+    #   - ./data/db:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgre
+  solr:
+    image: solr:8.7.0
+    ports:
+     - "8983:8983"
+    # volumes:
+    #   - ./data/solr:/opt/solr/server/solr
+  python_app_2:
+    build:
+      context: .
+      dockerfile: ./social_connect_app_backend./Dockerfile
+    volumes:
+      - ./social_connect_app_backend:/code
+    environment:
+      NODE_ENV: development
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  react-app:
+    build: 
+      context: .
+      dockerfile: ./social_connect_app_frontend/Dockerfile
+    # volumes:
+    #   - ./social_connect_app_frontend:/usr/src/app
+    environment:
+      NODE_ENV: development
+    command: /usr/src/app/entrypoint.sh
+    ports:
+      - 3000:3000
+    
