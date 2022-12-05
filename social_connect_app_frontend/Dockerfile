@@ -20,7 +20,7 @@ RUN  npm install react-scripts --legacy-peer-deps && mv node_modules ./
 RUN  npm install -g npm@9.1.2
 # WORKDIR /usr/src/app
 COPY ./social_connect_app_frontend /usr/src/app
-RUN chown -R node /usr/src/react
+RUN chown -R node /usr/src/app
 # EXPOSE 3000
 # # USER node
 #  CMD ["ping","www.google.com"]
