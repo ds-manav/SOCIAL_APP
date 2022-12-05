@@ -19,7 +19,7 @@ services:
   python_app_2:
     build:
       context: .
-      dockerfile: ./social_connect_app_backend./Dockerfile
+      dockerfile: ./social_connect_app_backend/Dockerfile
     volumes:
       - ./social_connect_app_backend:/code
     environment:
